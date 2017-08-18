@@ -200,7 +200,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -210,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -282,7 +282,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-18T22:26:08+08:00">
                 2017-08-18
@@ -468,7 +468,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-18T22:25:05+08:00">
                 2017-08-18
@@ -598,7 +598,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-18T22:23:34+08:00">
                 2017-08-18
@@ -772,7 +772,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-18T22:19:02+08:00">
                 2017-08-18
@@ -812,17 +812,11 @@
         
           
             <h2 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h2><ul>
-<li><ol>
-<li>Header 字段优先级:<br>Cache-Control &gt; Expires &gt; ETag &gt; Last-Modified</li>
-</ol>
+<li><p>1 Header 字段优先级:<br>Cache-Control &gt; Expires &gt; ETag &gt; Last-Modified</p>
 </li>
-<li><ol>
-<li>一般情况下，使用Cache-Control/Expires会配合Last-Modified/ETag一起使用，因为即使服务器设置缓存时间, 当用户点击“刷新”按钮时，浏览器会忽略缓存继续向服务器发送请求，这时Last-Modified/ETag将能够很好利用304，从而减少响应开销。</li>
-</ol>
+<li><p>2 一般情况下，使用Cache-Control/Expires会配合Last-Modified/ETag一起使用，因为即使服务器设置缓存时间, 当用户点击“刷新”按钮时，浏览器会忽略缓存继续向服务器发送请求，这时Last-Modified/ETag将能够很好利用304，从而减少响应开销。</p>
 </li>
-<li><ol>
-<li>各字段作用及区别</li>
-</ol>
+<li><p>3 各字段作用及区别</p>
 </li>
 </ul>
 <p>Expires: 告诉浏览器在过期时间前可以使用缓存副本;<br>Cache-Control: 参数（no-cache, no-store, max-age, public, private）;<br>Last-Modified:告诉浏览器资源最后修改时间;<br>ETag: 告诉浏览器当前资源在服务器的唯一标识符（规则服务器决定）</p>
@@ -836,17 +830,11 @@
 <p>配置Last-Modified/ETag的情况下，浏览器再次访问统一URI的资源，还是会发送请求到服务器询问文件是否已经修改，如果没有，服务器会只发送一个304回给浏览器，告诉浏览器直接从自己本地的缓存取数据；如果修改过那就整个数据重新发给浏览器；</p>
 <p>Cache-Control/Expires则不同，如果检测到本地的缓存还是有效的时间范围内，浏览器直接使用本地副本，不会发送任何请求。即当本地副本根据Cache-Control/Expires发现还在有效期内时，则不会再次发送请求去服务器询问修改时间（Last-Modified）或实体标识（Etag）了。</p>
 <ul>
-<li><ol>
-<li>用户操作对浏览器缓存影响:</li>
-</ol>
-</li>
+<li>4 用户操作对浏览器缓存影响:</li>
 </ul>
 <p>当用户在按F5进行刷新的时候，会忽略Expires/Cache-Control的设置，会再次发送请求去服务器请求，而Last-Modified/Etag还是有效的，服务器会根据情况判断返回304还是200；而当用户使用Ctrl+F5进行强制刷新的时候，只是所有的缓存机制都将失效，重新从服务器拉去资源。</p>
 <ul>
-<li><ol>
-<li>无法被浏览器缓存的请求:</li>
-</ol>
-</li>
+<li>5 无法被浏览器缓存的请求:</li>
 </ul>
 <p>a. HTTP信息头中包含Cache-Control:no-cache，pragma:no-cache，或Cache-Control:max-age=0等告诉浏览器不用缓存的请求<br>b. 需要根据Cookie，认证信息等决定输入内容的动态请求是不能被缓存的<br>c. 经过HTTPS安全加密的请求<br>d. POST请求无法被缓存<br>e. HTTP响应头中不包含Last-Modified/Etag，也不包含Cache-Control/Expires的请求无法被缓存</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
@@ -933,7 +921,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -987,7 +975,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

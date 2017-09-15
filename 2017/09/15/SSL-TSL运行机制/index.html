@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="浏览器缓存 1 Header 字段优先级:Cache-Control &amp;gt; Expires &amp;gt; ETag &amp;gt; Last-Modified  2 一般情况下，使用Cache-Control/Expires会配合Last-Modified/ETag一起使用，因为即使服务器设置缓存时间, 当用户点击“刷新”按钮时，浏览器会忽略缓存继续向服务器发送请求，这时Last-Modified/ET">
+<meta name="description" content="基本流程：（1） 客户端向服务端索要并验证公钥。（2） 双方协商生成”对话密钥”。（3） 双方采用”对话密钥”进行加密通信。 前两个阶段称为”握手阶段” 握手阶段详解: 首先由客户端发出加密通信请求。在这一阶段，客户端要向服务器提供一下信息:  1234a. 支持的协议版本。（如: TLS1.0, SSL3.0等）;b. 客户端生成随机数，用于生成&amp;quot;对话密钥&amp;quot;.c. 支持的加密">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于缓存的学习笔记">
-<meta property="og:url" content="http://yoursite.com/2017/08/18/关于缓存的学习笔记/index.html">
+<meta property="og:title" content="SSL,TSL运行机制">
+<meta property="og:url" content="http://yoursite.com/2017/09/15/SSL-TSL运行机制/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="浏览器缓存 1 Header 字段优先级:Cache-Control &amp;gt; Expires &amp;gt; ETag &amp;gt; Last-Modified  2 一般情况下，使用Cache-Control/Expires会配合Last-Modified/ETag一起使用，因为即使服务器设置缓存时间, 当用户点击“刷新”按钮时，浏览器会忽略缓存继续向服务器发送请求，这时Last-Modified/ET">
-<meta property="og:updated_time" content="2017-08-18T14:33:22.824Z">
+<meta property="og:description" content="基本流程：（1） 客户端向服务端索要并验证公钥。（2） 双方协商生成”对话密钥”。（3） 双方采用”对话密钥”进行加密通信。 前两个阶段称为”握手阶段” 握手阶段详解: 首先由客户端发出加密通信请求。在这一阶段，客户端要向服务器提供一下信息:  1234a. 支持的协议版本。（如: TLS1.0, SSL3.0等）;b. 客户端生成随机数，用于生成&amp;quot;对话密钥&amp;quot;.c. 支持的加密">
+<meta property="og:updated_time" content="2017-09-15T13:25:35.161Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于缓存的学习笔记">
-<meta name="twitter:description" content="浏览器缓存 1 Header 字段优先级:Cache-Control &amp;gt; Expires &amp;gt; ETag &amp;gt; Last-Modified  2 一般情况下，使用Cache-Control/Expires会配合Last-Modified/ETag一起使用，因为即使服务器设置缓存时间, 当用户点击“刷新”按钮时，浏览器会忽略缓存继续向服务器发送请求，这时Last-Modified/ET">
+<meta name="twitter:title" content="SSL,TSL运行机制">
+<meta name="twitter:description" content="基本流程：（1） 客户端向服务端索要并验证公钥。（2） 双方协商生成”对话密钥”。（3） 双方采用”对话密钥”进行加密通信。 前两个阶段称为”握手阶段” 握手阶段详解: 首先由客户端发出加密通信请求。在这一阶段，客户端要向服务器提供一下信息:  1234a. 支持的协议版本。（如: TLS1.0, SSL3.0等）;b. 客户端生成随机数，用于生成&amp;quot;对话密钥&amp;quot;.c. 支持的加密">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/18/关于缓存的学习笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/15/SSL-TSL运行机制/"/>
 
 
 
 
 
-  <title>关于缓存的学习笔记 | Hexo</title>
+  <title>SSL,TSL运行机制 | Hexo</title>
   
 
 
@@ -255,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/18/关于缓存的学习笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/15/SSL-TSL运行机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于缓存的学习笔记</h1>
+          <h1 class="post-title" itemprop="name headline">SSL,TSL运行机制</h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-18T22:19:02+08:00">
-                2017-08-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-15T21:24:45+08:00">
+                2017-09-15
               </time>
             
 
@@ -319,34 +319,32 @@
       
 
       
-        <h2 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h2><ul>
-<li><p>1 Header 字段优先级:<br>Cache-Control &gt; Expires &gt; ETag &gt; Last-Modified</p>
-</li>
-<li><p>2 一般情况下，使用Cache-Control/Expires会配合Last-Modified/ETag一起使用，因为即使服务器设置缓存时间, 当用户点击“刷新”按钮时，浏览器会忽略缓存继续向服务器发送请求，这时Last-Modified/ETag将能够很好利用304，从而减少响应开销。</p>
-</li>
-<li><p>3 各字段作用及区别</p>
-</li>
-</ul>
-<p>Expires: 告诉浏览器在过期时间前可以使用缓存副本;<br>Cache-Control: 参数（no-cache, no-store, max-age, public, private）;<br>Last-Modified:告诉浏览器资源最后修改时间;<br>ETag: 告诉浏览器当前资源在服务器的唯一标识符（规则服务器决定）</p>
-<p>区别：<br>Expires 与 Cache-Controle:</p>
-<p>Cache-Control与Expires的作用一致，都是指明当前资源的有效期，控制浏览器是否直接从浏览器缓存取数据还是重新发请求到服务器取数据。只不过Cache-Control的选择更多，设置更细致;</p>
-<p>ETag 与 Last-Modified:</p>
-<p>你可能会觉得使用Last-Modified已经足以让浏览器知道本地的缓存副本是否足够新，为什么还需要Etag（实体标识）呢？HTTP1.1中Etag的出现主要是为了解决几个Last-Modified比较难解决的问题：</p>
-<p>a 、Last-Modified标注的最后修改只能精确到秒级，如果某些文件在1秒钟以内，被修改多次的话，它将不能准确标注文件的新鲜度<br>b 、如果某些文件会被定期生成，当有时内容并没有任何变化，但Last-Modified却改变了，导致文件没法使用缓存<br>c 、有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形</p>
-<p>Etag是服务器自动生成或者由开发者生成的对应资源在服务器端的唯一标识符，能够更加准确的控制缓存。Last-Modified与ETag是可以一起使用的，服务器会优先验证ETag，一致的情况下，才会继续比对Last-Modified，最后才决定是否返回304。</p>
-<p>Expires/Cache-Controle 与 ETag/Last-Modified:</p>
-<p>配置Last-Modified/ETag的情况下，浏览器再次访问统一URI的资源，还是会发送请求到服务器询问文件是否已经修改，如果没有，服务器会只发送一个304回给浏览器，告诉浏览器直接从自己本地的缓存取数据；如果修改过那就整个数据重新发给浏览器；</p>
-<p>Cache-Control/Expires则不同，如果检测到本地的缓存还是有效的时间范围内，浏览器直接使用本地副本，不会发送任何请求。即当本地副本根据Cache-Control/Expires发现还在有效期内时，则不会再次发送请求去服务器询问修改时间（Last-Modified）或实体标识（Etag）了。</p>
-<ul>
-<li>4 用户操作对浏览器缓存影响:</li>
-</ul>
-<p>当用户在按F5进行刷新的时候，会忽略Expires/Cache-Control的设置，会再次发送请求去服务器请求，而Last-Modified/Etag还是有效的，服务器会根据情况判断返回304还是200；而当用户使用Ctrl+F5进行强制刷新的时候，只是所有的缓存机制都将失效，重新从服务器拉去资源。</p>
-<ul>
-<li>5 无法被浏览器缓存的请求:</li>
-</ul>
-<p>a. HTTP信息头中包含Cache-Control:no-cache，pragma:no-cache，或Cache-Control:max-age=0等告诉浏览器不用缓存的请求<br>b. 需要根据Cookie，认证信息等决定输入内容的动态请求是不能被缓存的<br>c. 经过HTTPS安全加密的请求<br>d. POST请求无法被缓存<br>e. HTTP响应头中不包含Last-Modified/Etag，也不包含Cache-Control/Expires的请求无法被缓存</p>
+        <h2 id="基本流程："><a href="#基本流程：" class="headerlink" title="基本流程："></a>基本流程：</h2><p>（1） 客户端向服务端索要并验证公钥。<br>（2） 双方协商生成”对话密钥”。<br>（3） 双方采用”对话密钥”进行加密通信。</p>
+<p>前两个阶段称为”握手阶段”</p>
+<h2 id="握手阶段详解"><a href="#握手阶段详解" class="headerlink" title="握手阶段详解:"></a>握手阶段详解:</h2><ol>
+<li>首先由客户端发出加密通信请求。在这一阶段，客户端要向服务器提供一下信息:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a. 支持的协议版本。（如: TLS1.0, SSL3.0等）;</div><div class="line">b. 客户端生成随机数，用于生成&quot;对话密钥&quot;.</div><div class="line">c. 支持的加密方法.</div><div class="line">d. 支持的压缩方法。</div></pre></td></tr></table></figure>
+<ol>
+<li>服务器收到客户端的信息后，向客户端返回信息，内容如下:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a. 确认使用的加密通信协议版本。如果浏览器与服务器支持的版本不一致，服务器关闭加密通信。</div><div class="line">b. 一个服务器生成的随机数，稍后用于生成&quot;对话密钥&quot;。</div><div class="line">c. 确认使用的加密方法。</div><div class="line">d. 服务器证书（数字证书，一般为了保证安全会有一个专门的CA机构签发）。</div></pre></td></tr></table></figure>
+<p>ps: 除了上面这些信息，如果服务器需要确认客户端的身份，就会再包含一项请求，要求客户端提供”客户端证书”。比如，金融机构往往只允许认证客户连入自己的网络，就会向正式客户提供USB密钥，里面就包含了一张客户端证书</p>
+<ol>
+<li>客户端收到服务器回应以后，首先验证服务器证书。如果证书不是可信机构颁布、或者证书中的域名与实际域名不一致、或者证书已经过期，就会向访问者显示一个警告，由其选择是否还要继续通信。如果证书没有问题，客户端就会从证书中取出服务器的公钥。然后，向服务器发送下面三项信息。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a. 一个随机数(pre-master-key)。该随机数用服务器公钥加密，防止被窃听。</div><div class="line">b. 编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送。</div><div class="line">c. 客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供服务器校验。</div></pre></td></tr></table></figure>
+<p>上面a项的随机数加上之前的两个随机数，用这三个随机数来生成”对话密钥”。至于为什么要用到三个随机数，原因如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&quot;不管是客户端还是服务器，都需要随机数，这样生成的密钥才不会每次都一样。由于SSL协议中证书是静态的，因此十分有必要引入一种随机因素来保证协商出来的密钥的随机性。</div><div class="line">对于RSA密钥交换算法来说，pre-master-key本身就是一个随机数，再加上hello消息中的随机，三个随机数通过一个密钥导出器最终导出一个对称密钥。</div><div class="line">pre master的存在在于SSL协议不信任每个主机都能产生完全随机的随机数，如果随机数不随机，那么pre master secret就有可能被猜出来，那么仅适用pre master secret作为密钥就不合适了，因此必须引入新的随机因素，那么客户端和服务器加上pre master secret三个随机数一同生成的密钥就不容易被猜出了，一个伪随机可能完全不随机，可是是三个伪随机就十分接近随机了，每增加一个自由度，随机性增加的可不是一。&quot;</div></pre></td></tr></table></figure>
+<ol>
+<li>服务器收到客户端的第三个随机数pre-master key之后，计算生成本次会话所用的”会话密钥”。然后，向客户端最后发送下面信息。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">（1）编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送。</div><div class="line">（2）服务器握手结束通知，表示服务器的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供客户端校验。</div></pre></td></tr></table></figure>
+<p>至此，整个握手阶段全部结束。接下来，客户端与服务器进入加密通信，就完全是使用普通的HTTP协议，只不过用”会话密钥”加密内容。</p>
+<h2 id="私钥的作用"><a href="#私钥的作用" class="headerlink" title="私钥的作用:"></a>私钥的作用:</h2><p>服务器有公钥和私钥，如上所述，在握手的过程中，会把公钥，通过数字证书传给客户端。客户端再通过公钥生成第三个随机数。</p>
+<p>上面所提到的握手之后的”会话密钥”,是对称加密,而服务器的公钥和私钥只用于加密和解密”对话密钥”（非对称加密），无其他作用。整个对话过程中（握手阶段和其后的对话），服务器的公钥和私钥只需要用到一次。紧记，公钥加密后基本上只有私钥能解密了。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="http://www.alloyteam.com/2012/03/web-cache-1-web-cache-overview/" target="_blank" rel="external">http://www.alloyteam.com/2012/03/web-cache-1-web-cache-overview/</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html</a></li>
 </ol>
 
       
@@ -384,15 +382,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/08/20/前端Css之BFC学习笔记/" rel="next" title="前端Css之BFC学习笔记">
+                <i class="fa fa-chevron-left"></i> 前端Css之BFC学习笔记
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/18/co源码学习笔记/" rel="prev" title="co源码学习笔记">
-                co源码学习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -504,7 +502,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器缓存"><span class="nav-number">1.</span> <span class="nav-text">浏览器缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本流程："><span class="nav-number">1.</span> <span class="nav-text">基本流程：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#握手阶段详解"><span class="nav-number">2.</span> <span class="nav-text">握手阶段详解:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#私钥的作用"><span class="nav-number">3.</span> <span class="nav-text">私钥的作用:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

@@ -99,3 +99,103 @@ a:hover {
 #canvas{
     margin: 0 auto;
 }
+
+.info {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-size: 24px;
+}
+
+.info div {
+    margin-bottom: 10px;
+}
+
+.info2 {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-size: 24px;
+}
+
+.info2 div {
+    margin-bottom: 10px;
+}
+
+.buttons {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.online {
+    margin-bottom: 80px;
+    font-size: 24px;
+    color: #acbae4;
+    cursor: pointer;
+}
+
+.offline {
+    font-size: 24px;
+    color: #dacccc;
+    cursor: pointer;
+}
+
+.offlineText {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #c2dced;
+    font-size: 24px;
+}
+
+.offlineText div {
+    margin-bottom: 10px;
+}
+
+.text {
+    display: none;
+}
+
+.total {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transform: translateX(50%);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #0b5f91;
+    line-height: 22px;
+    font-size: 16px;
+    background-color: white;
+    opacity: 0.4;
+    width: 50%;
+}

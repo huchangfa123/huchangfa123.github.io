@@ -3,13 +3,90 @@
   window.webkitRequestAnimationFrame || window.msRequestAnimationFrame
 
   const FRAME_RATE = 60
-  const PARTICLE_NUM = 2000
+  const PARTICLE_NUM = 4000
   const RADIUS = Math.PI * 2
-  const CANVASWIDTH = 500
-  const CANVASHEIGHT = 150
+  const CANVASWIDTH = window.innerWidth;
+  const CANVASHEIGHT = window.innerHeight;
   const CANVASID = 'canvas'
 
-  let texts = ['MY DEAR', 'LOOK UP AT THE', 'STARRY SKY', 'ARE YOU', 'LOOKING AT THE', 'SAME STAR', 'WITH ME ?', 'HAPPY', 'CHINESE', 'VALENTINE\'S', 'DAY', 'I MISS YOU']
+  let p1 = '';
+  let p2 = '因为你喜欢星星';
+  let p3 = '所以想到用这个方式';
+  let p4 = '嘿嘿!';
+  let p5 = '本来想的是';
+  let p6 = '音乐会前和你表白';
+  let p7 = '然后以情侣身份';
+  let p8 = '和你一起听音乐会';
+  let p9 = '这样更有纪念意义';
+  let p10 = '不过我嘴比较笨';
+  let p11 = '怕线下效果不好';
+  let p12 = '所以想到了这一出～';
+  let p13 = '之前就说过';
+  let p14 = '我是有更进一步';
+  let p15 = '了解你，';
+  let p16 = '照顾你的想法的';
+  let p17 = '我不知道，';
+  let p18 = '如果我们在一起了';
+  let p19 = '能不能一直走到最后';
+  let p20 = '但是至少现在，';
+  let p21 = '此时此刻，';
+  let p22 = '我希望';
+  let p23 = '能和你走到一起';
+  let p24 = '和我在一起，';
+  let p25 = '我不承诺将来，';
+  let p26 = '毕竟已经画了很多饼';
+  let p27 = '再画不太好,哈哈';
+  let p28 = '但我会保证现在，';
+  let p29 = '至少从现在起，';
+  let p30 = '我会努力的去实现，';
+  let p31 = '你想要的那种';
+  let p32 = '甜甜的，';
+  let p33 = '被偏爱的恋爱，';
+  let p34 = '所以，敏敏！';
+  let p35 = '你愿意,';
+  let p36 = '做我女朋友吗？'
+
+
+  let texts = [
+    '',
+    '',
+    p1,
+    p2,
+    p3,
+    p4,
+    p5,
+    p6,
+    p7,
+    p8,
+    p9,
+    p10,
+    p11,
+    p12,
+    p13,
+    p14,
+    p15,
+    p16,
+    p17,
+    p18,
+    p19,
+    p20,
+    p21,
+    p22,
+    p23,
+    p24,
+    p25,
+    p26,
+    p27,
+    p28,
+    p29,
+    p30,
+    p31,
+    p32,
+    p33,
+    p34,
+    p35,
+    p36,
+  ];
 
   let canvas,
     ctx,
@@ -17,14 +94,14 @@
     quiver = true,
     text = texts[0],
     textIndex = 0,
-    textSize = 70
+    textSize = 110
 
   function draw () {
     ctx.clearRect(0, 0, CANVASWIDTH, CANVASHEIGHT)
     ctx.fillStyle = 'rgb(255, 255, 255)'
     ctx.textBaseline = 'middle'
-    ctx.fontWeight = 'bold'
-    ctx.font = textSize + 'px \'SimHei\', \'Avenir\', \'Helvetica Neue\', \'Arial\', \'sans-serif\''
+    ctx.fontWeight = 'bolder'
+    ctx.font = textSize + 'px \'SimHei\', \'微软雅黑\', \'Avenir\', \'Helvetica Neue\', \'Arial\', \'sans-serif\''
     ctx.fillText(text, (CANVASWIDTH - ctx.measureText(text).width) * 0.5, CANVASHEIGHT * 0.5)
 
     let imgData = ctx.getImageData(0, 0, CANVASWIDTH, CANVASHEIGHT)
@@ -112,14 +189,17 @@
     canvas.style.top = '0%'
     canvas.style.bottom = '0%'
     canvas.style.right = '0%'
-    canvas.style.marginTop = window.innerHeight * .15 + 'px'
   }
 
   function event () {
     document.addEventListener('click', function (e) {
+      const canvas = document.getElementById('canvas');
+      if (canvas.style.display === 'none') return;
       textIndex++
       if (textIndex >= texts.length) {
         textIndex--
+        const total = document.getElementById('total');
+        total.style.display = 'flex';
         return
       }
       text = texts[textIndex]
@@ -127,9 +207,13 @@
     }, false)
 
     document.addEventListener('touchstart', function (e) {
+      const canvas = document.getElementById('canvas');
+      if (canvas.style.display === 'none') return;
       textIndex++
       if (textIndex >= texts.length) {
         textIndex--
+        const total = document.getElementById('total');
+        total.style.display = 'flex';
         return
       }
       text = texts[textIndex]
@@ -200,13 +284,15 @@
         this.opacity = 0
       }
     }
+
     draw (ctx) {
-      ctx.fillStyle = 'rgba(226,225,142, ' + this.opacity + ')'
+      ctx.fillStyle = 'rgba(248,204,0, ' + this.opacity + ')'
       ctx.beginPath()
       ctx.arc(this.x, this.y, this.size, 0, RADIUS, true)
       ctx.closePath()
       ctx.fill()
     }
+
   }
   
   var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);

@@ -5,7 +5,6 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Valentine</title>
-
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
@@ -14,11 +13,67 @@
   <body>
     <div class="container">
       <div class="content">
+        <div id="info" class="info" onclick="onFirstClick()">
+          <div>那天回去之后，我想了挺久，应该怎么表白能让你印象更深刻。</div>
+          <div>琢磨半天，还是选择回归老本行 ：），</div>
+          <div>现在给你两种选择，点击一下屏幕，会出现两个选项～</div>
+        </div>
+        <div id="buttons" class="buttons">
+          <div class="online" onclick="onlineClick()">姑且看看，线上表白版本！</div>
+          <div class="offline"  onclick="offlineClick()">算了，还是走线下吧！</div>
+        </div>
+        <div id="info2" class="info2" onclick="info2Click()">
+          <div>温馨提示，等句子成形并阅读完毕后，再点击屏幕看下一句</div>
+          <div>（再次点击一下屏幕，正式开始）</div>
+        </div>
+        <div id="offlineText" class="offlineText">
+          <div>就猜到你还会点进来 😝</div>
+          <div>好啦，好啦！满足你的愿望，让你实现全都要！</div>
+          <div>明天见面的时候，等着吧～</div>
+        </div>
+        <div id="total" class="total">
+          <div>全文 & 补充</div>
+          <div>憋死我了，星星只能八个字八个字打 😝</div>
+          <div>因为你喜欢星星，</div>
+          <div>所以想到用这个方式，嘿嘿！</div>
+          <div>想了挺久，本来打算在音乐会前和你表白的，</div>
+          <div>然后以情侣的身份，和你一起去听音乐会，</div>
+          <div>总觉得这样会更有纪念意义，哈哈！</div>
+          <div>不过我嘴比较笨，</div>
+          <div>怕到时候线下表白效果不咋滴（氛围没到这样就很尬，嘿嘿）</div>
+          <div>所以就想到了这一出。</div>
+          <div>之前就说过，</div>
+          <div>我是有更进一步了解你，照顾你的想法的。</div>
+          <div>我不知道，</div>
+          <div>如果我们在一起了，</div>
+          <div>能不能一直走到最后，</div>
+          <div>但是至少现在，</div>
+          <div>此时此刻，</div>
+          <div>我希望能和你走到一起。</div>
+          <div>和我在一起，</div>
+          <div>我不承诺将来，</div>
+          <div>毕竟已经画了很多饼了，</div>
+          <div>再画不太好,哈哈</div>
+          <div>但我会保证现在，</div>
+          <div>至少从现在起，</div>
+          <div>我会努力的去实现，</div>
+          <div>你想要的那种</div>
+          <div>甜甜的，</div>
+          <div>被偏爱的那种恋爱，</div>
+          <div>所以，敏敏，</div>
+          <div>你愿意,</div>
+          <div>做我女朋友吗？</div>
+        </div>
         <canvas id="universe"></canvas>
-        <canvas id="canvas"></canvas>
-        <iframe src="audio/[No Copyright Music] Unconditionally - Broken Elegance.mp3" allow="autoplay" style="display:none" id="iframeAudio"></iframe>
-        <audio autoplay loop>
-        	<source src="audio/[No Copyright Music] Unconditionally - Broken Elegance.mp3" type="audio/mpeg">
+        <canvas class="text" id="canvas"></canvas>
+        <audio
+          style="opacity: 0"
+          autoplay="autoplay"
+          controls="controls"
+          loop="loop"
+          preload="auto"
+          src="./audio/star.mp3"
+        >
         </audio>
         <div id="footer" class="">
           <svg id="scene" x="0%" y="0%" width="300%" height="100%">
@@ -134,6 +189,7 @@
     <!-- build:js scripts/main.js -->
     <script src="scripts/universe.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/click.js"></script>
     <!-- endbuild -->
   </body>
 </html>

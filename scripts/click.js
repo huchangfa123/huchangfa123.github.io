@@ -3,6 +3,8 @@ function onFirstClick() {
   element.style.display = 'none';
   const buttons = document.getElementById('buttons');
   buttons.style.display = 'flex';
+  const audio = document.getElementById('bgMusic');
+  audio.play();
 }
 
 function onlineClick() {
